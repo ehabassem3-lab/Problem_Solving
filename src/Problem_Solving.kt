@@ -777,3 +777,26 @@ fun maxProfit(inventory: IntArray, orders: Int): Int {
 
     return (profit % MOD).toInt()
 }
+
+
+fun isPalindrome(x: Int): Boolean {
+    var x = x
+    if (x < 0) {
+        return false
+    }
+
+    val original = x
+    var reversed = 0
+
+    while (x > 0) {
+        val digit = x % 10
+
+        reversed = reversed * 10 + digit
+
+        x /= 10
+    }
+
+    return original == reversed
+}
+
+
