@@ -9,7 +9,8 @@ fun main() {
    // println(occurances("Ehab assem  hafez"))
 //    moveZeroes(intArrayOf(0,1,0,3,12))
 //    addTwoNumbers(buildList(intArrayOf(2,4,3)) , buildList(intArrayOf(5,6,4)))
-    println(maxProfit(intArrayOf(2,8,4,10,6),20))
+//    println(maxProfit(intArrayOf(2,8,4,10,6),20))
+    println(romanToInt("III"))
 
 }
 
@@ -798,5 +799,32 @@ fun isPalindrome(x: Int): Boolean {
 
     return original == reversed
 }
+
+fun romanToInt(s: String): Int {
+    val romanMap = mapOf(
+        'I' to 1,
+        'V' to 5,
+        'X' to 10,
+        'L' to 50,
+        'C' to 100,
+        'D' to 500,
+        'M' to 1000
+    )
+
+    var total = 0
+    for (i in s.indices) {
+        val current = romanMap[s[i]] ?: 0
+        val next = if (i + 1 < s.length) romanMap[s[i + 1]] ?: 0 else 0
+
+        // If the current value is less than the next value, subtract it (e.g., IV = 5 - 1)
+        if (current < next) {
+            total -= current
+        } else {
+            total += current
+        }
+    }
+    return total
+}
+
 
 
