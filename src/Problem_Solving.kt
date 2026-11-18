@@ -10,7 +10,8 @@ fun main() {
 //    moveZeroes(intArrayOf(0,1,0,3,12))
 //    addTwoNumbers(buildList(intArrayOf(2,4,3)) , buildList(intArrayOf(5,6,4)))
 //    println(maxProfit(intArrayOf(2,8,4,10,6),20))
-    println(romanToInt("III"))
+//    println(romanToInt("III"))
+    println(longestCommonPrefix(arrayOf("dog","racecar","car")))
 
 }
 
@@ -826,5 +827,32 @@ fun romanToInt(s: String): Int {
     return total
 }
 
+fun longestCommonPrefix(strs: Array<String>): String {
+     val first  : String = strs[0]
+    val  commoonPrefix : StringBuilder = StringBuilder()
+        for (i in 1 until strs.size){
+            var word = strs[i]
+            for (j in 0 until word.length){
+                if (first[j] == word[j]){
+                    if (commoonPrefix.contains(first[j])){
+                        continue
+                    }
+                    commoonPrefix.append(first[j])
 
+                }else{
+                 commoonPrefix.deleteRange(j,commoonPrefix.length)
+                    return  commoonPrefix.toString()
+
+
+                }
+            }
+        }
+
+//    for (i in 0 until strs.size ) {
+//        for (j in i until strs.size){
+//
+//        }
+//    }
+    return  commoonPrefix.toString()
+}
 
