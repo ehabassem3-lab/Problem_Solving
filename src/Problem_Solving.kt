@@ -11,7 +11,7 @@ fun main() {
 //    addTwoNumbers(buildList(intArrayOf(2,4,3)) , buildList(intArrayOf(5,6,4)))
 //    println(maxProfit(intArrayOf(2,8,4,10,6),20))
 //    println(romanToInt("III"))
-    println(longestCommonPrefix(arrayOf("dog","racecar","car")))
+    println(threeSumClosest(intArrayOf(0,0,0) , 1))
 
 }
 
@@ -889,4 +889,50 @@ fun threeSum(nums: IntArray): List<List<Int>> {
     }
 
     return result
+}
+
+fun closestNumber(nums: MutableList<Int>, target: Int) : Int{
+    val closestNumbers = mutableListOf<Int>()
+    val map : MutableMap<Int , Int> = mutableMapOf()
+
+    for (n in nums){
+        if (target > n){
+             closestNumbers.add(target-n)
+
+            map[n] = target-n
+        }else{
+          closestNumbers.add(n-target)
+
+            map[n] = n-target
+        }
+
+    }
+    var lowest = map[nums[0]]
+   for (n in map.values){
+        if (lowest!! > n){
+            lowest = n
+        }
+     }
+      val Closest = map.entries.firstNotNullOfOrNull { (key, value) -> if (value == lowest) key else null }
+    return    Closest!!
+}
+
+fun threeSumClosest(nums: IntArray, target: Int): Int {
+    if (nums.size <= 1) return  0
+    var eachNumber = 0
+     val sumsList  = mutableListOf<Int>()
+    val windows: List<List<Int>> = nums.toList().windowed(3)
+
+    for (i in 0 until windows.size){
+        sumsList.add(eachNumber)
+        eachNumber = 0
+        for (j in 0 until  windows[i].size){
+            eachNumber += windows[i][j]
+
+        }
+    }
+//
+
+  return  closestNumber(sumsList,target)
+
 }
