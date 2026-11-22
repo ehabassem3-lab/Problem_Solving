@@ -11,7 +11,7 @@ fun main() {
 //    addTwoNumbers(buildList(intArrayOf(2,4,3)) , buildList(intArrayOf(5,6,4)))
 //    println(maxProfit(intArrayOf(2,8,4,10,6),20))
 //    println(romanToInt("III"))
-    println(threeSumClosest(intArrayOf(0,0,0) , 1))
+    println(letterCombinations("2"))
 
 }
 
@@ -935,4 +935,48 @@ fun threeSumClosest(nums: IntArray, target: Int): Int {
 
   return  closestNumber(sumsList,target)
 
+}
+
+fun letterCombinations(digits: String): List<String> {
+//    var mix
+    var compination = mutableListOf<String>()
+    var alpapeticMine   = mutableListOf<List<String>>()
+    val  alpapetic    =  mapOf<Int, List<String>>(
+        1 to listOf("$") ,
+        2  to listOf("a","b","c") ,
+        3  to  listOf("d","e","f") ,
+        4  to  listOf("g","h","i") ,
+        5  to  listOf("j","k","l") ,
+        6  to  listOf("m","n","o") ,
+        7  to  listOf("p","q","r","s") ,
+        8  to  listOf("t","u","v") ,
+        9  to  listOf("w","x","y","z")
+
+    )
+
+          var x = alpapetic[digits.toInt()]
+        if (digits.length == 1){
+            for (i in 0 until x!!.size){
+                compination.add(x[i])
+            }
+        }
+
+
+    for (i in 0 until digits.length){
+        alpapeticMine.add(alpapetic[digits[i].digitToInt()]!!)
+    }
+
+    for (i in 0 until alpapeticMine.size){
+        var builder = StringBuilder()
+        for (j in 0 until alpapeticMine[i].size){
+
+
+        }
+
+    }
+
+
+
+
+        return compination
 }
