@@ -11,7 +11,7 @@ fun main() {
 //    addTwoNumbers(buildList(intArrayOf(2,4,3)) , buildList(intArrayOf(5,6,4)))
 //    println(maxProfit(intArrayOf(2,8,4,10,6),20))
 //    println(romanToInt("III"))
-    println(letterCombinations("2"))
+    println(letterCombinations("3922"))
 
 }
 
@@ -964,16 +964,36 @@ fun letterCombinations(digits: String): List<String> {
 
     for (i in 0 until digits.length){
         alpapeticMine.add(alpapetic[digits[i].digitToInt()]!!)
+
     }
+
 
     for (i in 0 until alpapeticMine.size){
         var builder = StringBuilder()
-        for (j in 0 until alpapeticMine[i].size){
+        while (i < alpapeticMine.size-1){
+            var current = alpapeticMine[i]
+           var next = alpapeticMine[i+1]
+            for (j in 0 until current.size){
+                for (k in 0 until next.size){
+                    builder.append(current[j])
+                    builder.append(next[k])
+                    compination.add(builder.toString())
+                    builder.setLength(0)
+                }
+
+            }
+
+             break
+        }
+
 
 
         }
 
-    }
+
+
+
+
 
 
 
