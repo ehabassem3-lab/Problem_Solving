@@ -11,7 +11,7 @@ fun main() {
 //    addTwoNumbers(buildList(intArrayOf(2,4,3)) , buildList(intArrayOf(5,6,4)))
 //    println(maxProfit(intArrayOf(2,8,4,10,6),20))
 //    println(romanToInt("III"))
-    println(letterCombinations("3922"))
+    println(fourSumClosest(intArrayOf(2,2,2,2,2) , 8))
 
 }
 
@@ -1000,3 +1000,23 @@ fun letterCombinations(digits: String): List<String> {
 
         return compination
 }
+fun fourSumClosest(nums: IntArray, target: Int): Int {
+    if (nums.size <= 1) return  0
+    var eachNumber = 0
+    val sumsList  = mutableListOf<Int>()
+    val windows: List<List<Int>> = nums.toList().windowed(4)
+
+    for (i in 0 until windows.size){
+        sumsList.add(eachNumber)
+        eachNumber = 0
+        for (j in 0 until  windows[i].size){
+            eachNumber += windows[i][j]
+
+        }
+    }
+//
+
+    return  closestNumber(sumsList,target)
+
+}
+
